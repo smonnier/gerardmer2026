@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festival de Gérardmer 2026 - Programme</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #4472C4 0%, #2c5aa0 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .tabs {
+            display: flex;
+            background: #f5f5f5;
+            border-bottom: 3px solid #4472C4;
+            overflow-x: auto;
+        }
+        
+        .tab-button {
+            padding: 15px 25px;
+            background: #e0e0e0;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+            white-space: nowrap;
+            color: #555;
+        }
+        
+        .tab-button:hover {
+            background: #d0d0d0;
+        }
+        
+        .tab-button.active {
+            background: #4472C4;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 20px;
+            animation: fadeIn 0.5s;
+            overflow-x: auto;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .day-title {
+            margin-bottom: 20px;
+            color: #4472C4;
+            font-size: 1.8em;
+        }
+        
+        .schedule-container {
+            min-width: 1200px;
+            position: relative;
+        }
+        
+        .schedule-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        
+        .schedule-table th {
+            background: #4472C4;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid #fff;
+            font-size: 14px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .schedule-table th.time-header {
+            width: 80px;
+        }
+        
+        .schedule-table th.venue-header {
+            width: 25%;
+        }
+        
+        .schedule-table td {
+            border: 1px solid #e0e0e0;
+            height: 40px;
+            position: relative;
+            vertical-align: top;
+        }
+        
+        .schedule-table td.time-cell {
+            background: #f5f5f5;
+            text-align: center;
+            font-weight: bold;
+            font-size: 12px;
+            color: #555;
+            vertical-align: middle;
+        }
+        
+        .schedule-table td.venue-cell {
+            padding: 0;
+            background: #fafafa;
+        }
+        
+        .movie-block {
+            position: absolute;
+            left: 2px;
+            right: 2px;
+            padding: 8px;
+            border-radius: 6px;
+            border: 2px solid #333;
+            font-size: 11px;
+            line-height: 1.3;
+            cursor: pointer;
+            overflow: hidden;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .movie-block:hover {
+            z-index: 100;
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .movie-title {
+            font-weight: bold;
+            margin-bottom: 3px;
+            font-size: 11px;
+            line-height: 1.2;
+        }
+        
+        .movie-duration {
+            color: #666;
+            font-size: 10px;
+        }
+        
+        .movie-info {
+            font-style: italic;
+            color: #888;
+            font-size: 9px;
+            margin-top: 2px;
+        }
+        
+        .asterisk {
+            color: #ff6b6b;
+            font-weight: bold;
+            font-size: 13px;
+        }
+        
+        /* Couleurs COMP */
+        .comp-welcome { background: #FFD966; border-color: #e6c34d; }
+        .comp-nervures { background: #C6E0B4; border-color: #a8c99b; }
+        .comp-kids { background: #F4B084; border-color: #da9b6f; }
+        .comp-mother { background: #BDD7EE; border-color: #a1bfd4; }
+        .comp-weed { background: #E2EFDA; border-color: #cad9c1; }
+        .comp-feathers { background: #FCE4D6; border-color: #e0cbbe; }
+        .comp-junk { background: #DDEBF7; border-color: #c3d3dd; }
+        .comp-redux { background: #FFF2CC; border-color: #e6dab3; }
+        .comp-cadet { background: #D9E1F2; border-color: #bfc9d8; }
+        
+        .hommage {
+            background: #ffe6f0;
+            border-color: #ff69b4;
+        }
+        
+        .jeune-public {
+            background: #e6f3ff;
+            border-color: #4dabf7;
+        }
+        
+        .ceremonie {
+            background: #fff3cd;
+            border-color: #ffc107;
+        }
+        
+        .nuit {
+            background: #2d2d2d;
+            color: white;
+            border-color: #555;
+        }
+        
+        .nuit .movie-duration,
+        .nuit .movie-info {
+            color: #ccc;
+        }
+        
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px 8px 0 0;
+            border-top: 3px solid #4472C4;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .legend-color {
+            width: 30px;
+            height: 20px;
+            border-radius: 4px;
+            border: 2px solid #ddd;
+        }
+        
+        .legend-text {
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        .venue-selector {
+            display: none;
+            padding: 15px 20px;
+            background: #f0f0f0;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
+        
+        .venue-selector label {
+            font-weight: bold;
+            margin-right: 10px;
+            color: #4472C4;
+        }
+        
+        .venue-selector select {
+            padding: 8px 15px;
+            font-size: 14px;
+            border: 2px solid #4472C4;
+            border-radius: 5px;
+            background: white;
+            color: #333;
+            cursor: pointer;
+            min-width: 200px;
+        }
+        
+        @media (max-width: 1024px) {
+            .container {
+                margin: 10px;
+            }
+            
+            header h1 {
+                font-size: 2em;
+            }
+            
+            .schedule-container {
+                min-width: auto;
+            }
+            
+            .venue-selector {
+                display: block;
+            }
+            
+            .schedule-table th.venue-header,
+            .schedule-table td.venue-cell {
+                display: none;
+            }
+            
+            .schedule-table th.venue-header.active,
+            .schedule-table td.venue-cell.active {
+                display: table-cell;
+            }
+            
+            .schedule-table th.venue-header.active {
+                width: auto;
+            }
+            
+            .legend {
+                gap: 10px;
+                padding: 15px;
+            }
+            
+            .legend-item {
+                flex: 0 0 calc(50% - 5px);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+            
+            header p {
+                font-size: 1em;
+            }
+            
+            .tabs {
+                flex-wrap: wrap;
+            }
+            
+            .tab-button {
+                flex: 1 0 auto;
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+            
+            .day-title {
+                font-size: 1.4em;
+            }
+            
+            .schedule-table {
+                font-size: 11px;
+            }
+            
+            .schedule-table th {
+                padding: 10px 5px;
+                font-size: 12px;
+            }
+            
+            .schedule-table td.time-cell {
+                font-size: 11px;
+                padding: 5px;
+            }
+            
+            .movie-block {
+                font-size: 10px;
+                padding: 6px;
+            }
+            
+            .movie-title {
+                font-size: 10px;
+            }
+            
+            .legend-item {
+                flex: 0 0 100%;
+            }
+            
+            .venue-selector select {
+                width: 100%;
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎬 Festival de Gérardmer 2026</h1>
+            <p>Programme des projections - 32ème édition</p>
+        </header>
+        
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab('mardi')">Mardi 27</button>
+            <button class="tab-button" onclick="showTab('mercredi')">Mercredi 28</button>
+            <button class="tab-button" onclick="showTab('jeudi')">Jeudi 29</button>
+            <button class="tab-button" onclick="showTab('vendredi')">Vendredi 30</button>
+            <button class="tab-button" onclick="showTab('samedi')">Samedi 31</button>
+            <button class="tab-button" onclick="showTab('dimanche')">Dimanche 1er</button>
+        </div>
+        
+        <div id="mardi" class="tab-content active"></div>
+        <div id="mercredi" class="tab-content"></div>
+        <div id="jeudi" class="tab-content"></div>
+        <div id="vendredi" class="tab-content"></div>
+        <div id="samedi" class="tab-content"></div>
+        <div id="dimanche" class="tab-content"></div>
+        
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color comp-welcome"></div>
+                <span class="legend-text">WELCOME HOME BABY</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color comp-nervures"></div>
+                <span class="legend-text">NERVURES</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color comp-kids"></div>
+                <span class="legend-text">DON'T LEAVE THE KIDS ALONE</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color comp-mother"></div>
+                <span class="legend-text">MOTHER'S BABY</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color comp-weed"></div>
+                <span class="legend-text">THE WEED EATERS</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color comp-feathers"></div>
+                <span class="legend-text">THE THING WITH FEATHERS</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color comp-junk"></div>
+                <span class="legend-text">JUNK WORLD</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color comp-redux"></div>
+                <span class="legend-text">REDUX REDUX</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color comp-cadet"></div>
+                <span class="legend-text">CADET</span>
+            </div>
+            <div class="legend-item">
+                <span class="asterisk">*</span>
+                <span class="legend-text">Première à l'Espace Lac</span>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const programme = {
+            mardi: {
+                title: "Mardi 27 janvier",
+                startTime: "18:00",
+                endTime: "21:00",
+                movies: [
+                    {time: "18:30", venue: "Espace Lac", title: "Cérémonie d'ouverture<br>SEND HELP", duration: 115, class: "ceremonie", info: "Sur invitation"},
+                    {time: "19:30", venue: "Casino", title: "SEND HELP", duration: 115, class: ""},
+                ]
+            },
+            mercredi: {
+                title: "Mercredi 28 janvier",
+                startTime: "11:00",
+                endTime: "23:30",
+                movies: [
+                    {time: "11:00", venue: "Espace Lac", title: "WELCOME HOME BABY *", duration: 115, class: "comp-welcome", info: "En présence du réalisateur"},
+                    {time: "11:00", venue: "Casino", title: "RED STORM", duration: 123, class: "", info: "JOKO - vosta"},
+                    {time: "11:00", venue: "Paradiso", title: "HALLOWEEN", duration: 109, class: "", info: "MASK"},
+                    {time: "11:30", venue: "MCL", title: "L'HOMME INVISIBLE", duration: 71, class: "", info: "MASK"},
+                    {time: "14:00", venue: "MCL", title: "SATAN'S SLAVES", duration: 107, class: "", info: "JOKO - vosta"},
+                    {time: "14:30", venue: "Espace Lac", title: "PLANÈTES", duration: 75, class: "jeune-public", info: "Tous publics"},
+                    {time: "14:30", venue: "Paradiso", title: "HOMMAGE<br>DANS LA BRUME", duration: 89, class: "hommage", info: "OLGA"},
+                    {time: "15:00", venue: "Casino", title: "NOSFERATU, FANTÔME DE LA NUIT", duration: 107, class: "", info: "RÉTRO"},
+                    {time: "16:00", venue: "MCL", title: "LE VOYAGE DE CHIHIRO", duration: 125, class: "jeune-public", info: "MASK - Tous publics VF"},
+                    {time: "16:30", venue: "Paradiso", title: "WATCHMEN : LES GARDIENS", duration: 162, class: "", info: "MASK"},
+                    {time: "17:00", venue: "Espace Lac", title: "NERVURES *", duration: 96, class: "comp-nervures"},
+                    {time: "17:30", venue: "Casino", title: "THE INVITATION", duration: 100, class: "", info: "RÉTRO"},
+                    {time: "18:30", venue: "MCL", title: "GRAVE TORTURE", duration: 117, class: "", info: "JOKO - vosta"},
+                    {time: "19:30", venue: "Espace Lac", title: "DON'T LEAVE THE KIDS ALONE *", duration: 96, class: "comp-kids", info: "En présence du réalisateur"},
+                    {time: "19:30", venue: "Casino", title: "WELCOME HOME BABY", duration: 115, class: "comp-welcome"},
+                    {time: "19:30", venue: "Paradiso", title: "DONNIE DARKO - DIRECTOR'S CUT", duration: 134, class: "", info: "MASK"},
+                    {time: "21:30", venue: "MCL", title: "MODUS ANOMALI : LE RÉVEIL DE LA PROIE", duration: 88, class: "", info: "JOKO - vosta"},
+                    {time: "22:00", venue: "Espace Lac", title: "I LIVE HERE NOW", duration: 91, class: "", info: "En présence de la réalisatrice"},
+                    {time: "22:00", venue: "Casino", title: "NERVURES", duration: 96, class: "comp-nervures"},
+                    {time: "22:00", venue: "Paradiso", title: "DON'T LEAVE THE KIDS ALONE", duration: 97, class: "comp-kids"},
+                ]
+            },
+            jeudi: {
+                title: "Jeudi 29 janvier",
+                startTime: "11:00",
+                endTime: "23:30",
+                movies: [
+                    {time: "11:00", venue: "Espace Lac", title: "MOTHER'S BABY *", duration: 108, class: "comp-mother", info: "En présence de la réalisatrice"},
+                    {time: "11:00", venue: "Paradiso", title: "OUVRE LES YEUX", duration: 119, class: "", info: "MASK"},
+                    {time: "11:30", venue: "Casino", title: "LA FAMILLE ADDAMS", duration: 99, class: "", info: "RÉTRO"},
+                    {time: "11:30", venue: "MCL", title: "HOMMAGE<br>THE ROOM", duration: 98, class: "hommage", info: "OLGA"},
+                    {time: "14:00", venue: "Paradiso", title: "PHANTOM OF THE PARADISE", duration: 91, class: "", info: "MASK"},
+                    {time: "14:30", venue: "Espace Lac", title: "THE WEED EATERS *", duration: 80, class: "comp-weed"},
+                    {time: "14:30", venue: "Casino", title: "MOTHER'S BABY", duration: 108, class: "comp-mother"},
+                    {time: "14:30", venue: "MCL", title: "IMPETIGORE", duration: 107, class: "", info: "JOKO - vosta"},
+                    {time: "16:00", venue: "Paradiso", title: "LE MASQUE DU DÉMON", duration: 85, class: "", info: "MASK"},
+                    {time: "17:00", venue: "Espace Lac", title: "THE DESCENT", duration: 99, class: "", info: "RÉTRO"},
+                    {time: "17:00", venue: "Casino", title: "VIEJA LOCA", duration: 94, class: ""},
+                    {time: "17:30", venue: "MCL", title: "I LIVE HERE NOW", duration: 91, class: ""},
+                    {time: "18:00", venue: "Paradiso", title: "PLANÈTES", duration: 75, class: "jeune-public", info: "Tous publics"},
+                    {time: "19:30", venue: "Espace Lac", title: "Focus Joko Anwar<br>THE THING WITH FEATHERS *", duration: 98, class: "comp-feathers", info: "En présence du réalisateur"},
+                    {time: "19:30", venue: "MCL", title: "NERVURES", duration: 96, class: "comp-nervures"},
+                    {time: "19:30", venue: "Paradiso", title: "WELCOME HOME BABY", duration: 115, class: "comp-welcome"},
+                    {time: "20:00", venue: "Casino", title: "DON'T LEAVE THE KIDS ALONE", duration: 97, class: "comp-kids"},
+                    {time: "22:00", venue: "Espace Lac", title: "SILENCE", duration: 56, class: "", info: "En présence du réalisateur"},
+                    {time: "22:00", venue: "Casino", title: "THE WEED EATERS", duration: 80, class: "comp-weed"},
+                    {time: "22:00", venue: "MCL", title: "THE THING WITH FEATHERS", duration: 98, class: "comp-feathers"},
+                    {time: "22:00", venue: "Paradiso", title: "VIEJA LOCA", duration: 94, class: ""},
+                ]
+            },
+            vendredi: {
+                title: "Vendredi 30 janvier",
+                startTime: "09:00",
+                endTime: "02:00",
+                movies: [
+                    {time: "09:00", venue: "Casino", title: "THE THING WITH FEATHERS", duration: 98, class: "comp-feathers"},
+                    {time: "09:00", venue: "MCL", title: "VIEJA LOCA", duration: 94, class: ""},
+                    {time: "09:30", venue: "Paradiso", title: "SILENCE", duration: 56, class: ""},
+                    {time: "11:00", venue: "Espace Lac", title: "JUNK WORLD *", duration: 105, class: "comp-junk"},
+                    {time: "11:00", venue: "MCL", title: "HOMMAGE<br>CENTURION", duration: 97, class: "hommage", info: "OLGA"},
+                    {time: "11:00", venue: "Paradiso", title: "PLANÈTES", duration: 75, class: "jeune-public", info: "Tous publics"},
+                    {time: "11:30", venue: "Casino", title: "NERVURES", duration: 96, class: "comp-nervures"},
+                    {time: "14:00", venue: "Paradiso", title: "I LIVE HERE NOW", duration: 91, class: ""},
+                    {time: "14:30", venue: "Espace Lac", title: "COMPÉTITION COURTS MÉTRAGES", duration: 107, class: "", info: "En présence des réalisateurs"},
+                    {time: "14:30", venue: "Casino", title: "L'ODYSSÉE DE CÉLESTE", duration: 86, class: "jeune-public", info: "Séance jeune public VF"},
+                    {time: "15:00", venue: "MCL", title: "Masterclass Neil Marshall", duration: 60, class: "", info: "Entrée gratuite sur réservation"},
+                    {time: "16:00", venue: "Paradiso", title: "THE WEED EATERS", duration: 80, class: "comp-weed"},
+                    {time: "16:30", venue: "Casino", title: "VIEJA LOCA", duration: 94, class: ""},
+                    {time: "17:00", venue: "Espace Lac", title: "REDUX REDUX *", duration: 107, class: "comp-redux"},
+                    {time: "17:30", venue: "MCL", title: "MOTHER'S BABY", duration: 108, class: "comp-mother"},
+                    {time: "18:00", venue: "Paradiso", title: "COMPÉTITION COURTS MÉTRAGES", duration: 107, class: ""},
+                    {time: "18:30", venue: "Casino", title: "SILENCE", duration: 56, class: ""},
+                    {time: "20:00", venue: "Espace Lac", title: "Hommage Olga Kurylenko<br>ALTER EGO", duration: 104, class: "ceremonie", info: "En présence des réalisateurs"},
+                    {time: "20:00", venue: "Casino", title: "JUNK WORLD", duration: 105, class: "comp-junk"},
+                    {time: "20:00", venue: "MCL", title: "THE WEED EATERS", duration: 80, class: "comp-weed"},
+                    {time: "20:00", venue: "Paradiso", title: "DON'T LEAVE THE KIDS ALONE", duration: 97, class: "comp-kids"},
+                    {time: "22:00", venue: "Casino", title: "REDUX REDUX", duration: 107, class: "comp-redux"},
+                    {time: "22:00", venue: "MCL", title: "WELCOME HOME BABY", duration: 115, class: "comp-welcome"},
+                    {time: "22:00", venue: "Paradiso", title: "ALTER EGO", duration: 104, class: ""},
+                    {time: "22:30", venue: "Espace Lac", title: "Nuit des Masques<br>NIGHT OF THE REAPER<br>DEAD BY DAWN", duration: 180, class: "nuit", info: "1 entrée = 2 films"},
+                ]
+            },
+            samedi: {
+                title: "Samedi 31 janvier",
+                startTime: "09:00",
+                endTime: "02:30",
+                movies: [
+                    {time: "09:00", venue: "Casino", title: "REDUX REDUX", duration: 107, class: "comp-redux"},
+                    {time: "09:00", venue: "Paradiso", title: "JUNK WORLD", duration: 105, class: "comp-junk"},
+                    {time: "11:00", venue: "Espace Lac", title: "CADET *", duration: 127, class: "comp-cadet"},
+                    {time: "11:00", venue: "MCL", title: "MOTHER'S BABY", duration: 108, class: "comp-mother"},
+                    {time: "11:00", venue: "Paradiso", title: "COMPÉTITION COURTS MÉTRAGES", duration: 107, class: ""},
+                    {time: "11:30", venue: "Casino", title: "JUNK WORLD", duration: 105, class: "comp-junk"},
+                    {time: "14:00", venue: "Casino", title: "CADET", duration: 127, class: "comp-cadet"},
+                    {time: "14:00", venue: "Paradiso", title: "THE THING WITH FEATHERS", duration: 98, class: "comp-feathers"},
+                    {time: "14:30", venue: "Espace Lac", title: "COLD STORAGE", duration: 98, class: ""},
+                    {time: "14:30", venue: "MCL", title: "Rencontre Joko Anwar + Table ronde", duration: 90, class: "", info: "Entrée gratuite sur réservation"},
+                    {time: "16:00", venue: "Paradiso", title: "CADET", duration: 127, class: "comp-cadet"},
+                    {time: "16:30", venue: "Casino", title: "ALTER EGO", duration: 104, class: ""},
+                    {time: "17:00", venue: "MCL", title: "REDUX REDUX", duration: 107, class: "comp-redux"},
+                    {time: "18:30", venue: "Casino", title: "SILENCE", duration: 56, class: ""},
+                    {time: "18:30", venue: "Paradiso", title: "I LIVE HERE NOW", duration: 91, class: ""},
+                    {time: "19:00", venue: "Espace Lac", title: "Cérémonie du Palmarès<br>RETOUR À SILENT HILL", duration: 105, class: "ceremonie", info: "Sur invitation - En présence du réalisateur"},
+                    {time: "20:00", venue: "Casino", title: "COLD STORAGE", duration: 98, class: ""},
+                    {time: "20:00", venue: "MCL", title: "NIGHT OF THE REAPER", duration: 93, class: "nuit"},
+                    {time: "20:30", venue: "Paradiso", title: "DEAD BY DAWN", duration: 87, class: "nuit"},
+                    {time: "22:00", venue: "MCL", title: "THE DESCENT", duration: 99, class: "", info: "RÉTRO"},
+                    {time: "22:30", venue: "Espace Lac", title: "DOLLY", duration: 82, class: ""},
+                    {time: "22:30", venue: "Casino", title: "DEAD BY DAWN", duration: 87, class: "nuit"},
+                    {time: "22:30", venue: "Paradiso", title: "NIGHT OF THE REAPER", duration: 93, class: "nuit"},
+                    {time: "00:30", venue: "Espace Lac", title: "Nuit décalée<br>FLUSH<br>HOLD THE FORT", duration: 144, class: "nuit", info: "1 entrée = 2 films - En présence de l'équipe"},
+                ]
+            },
+            dimanche: {
+                title: "Dimanche 1er février",
+                startTime: "09:00",
+                endTime: "20:30",
+                movies: [
+                    {time: "09:00", venue: "MCL", title: "THE WEED EATERS", duration: 80, class: "comp-weed"},
+                    {time: "09:00", venue: "Paradiso", title: "THE THING WITH FEATHERS", duration: 98, class: "comp-feathers"},
+                    {time: "09:30", venue: "Casino", title: "HOLD THE FORT", duration: 74, class: "nuit"},
+                    {time: "11:00", venue: "Espace Lac", title: "WELCOME HOME BABY", duration: 115, class: "comp-welcome"},
+                    {time: "11:00", venue: "Casino", title: "CADET", duration: 127, class: "comp-cadet"},
+                    {time: "11:00", venue: "MCL", title: "REDUX REDUX", duration: 107, class: "comp-redux"},
+                    {time: "11:30", venue: "Paradiso", title: "SILENCE", duration: 56, class: ""},
+                    {time: "14:00", venue: "MCL", title: "MOTHER'S BABY", duration: 108, class: "comp-mother"},
+                    {time: "14:00", venue: "Paradiso", title: "JUNK WORLD", duration: 105, class: "comp-junk"},
+                    {time: "14:30", venue: "Espace Lac", title: "DOLLY", duration: 82, class: ""},
+                    {time: "14:30", venue: "Casino", title: "COLD STORAGE", duration: 98, class: ""},
+                    {time: "16:30", venue: "Espace Lac", title: "DON'T LEAVE THE KIDS ALONE", duration: 97, class: "comp-kids"},
+                    {time: "16:30", venue: "Casino", title: "NERVURES", duration: 96, class: "comp-nervures"},
+                    {time: "16:30", venue: "MCL", title: "FLUSH", duration: 70, class: "nuit"},
+                    {time: "16:30", venue: "Paradiso", title: "COMPÉTITION COURTS MÉTRAGES", duration: 107, class: ""},
+                    {time: "19:30", venue: "Espace Lac", title: "Spectacle de clôture<br>Le Faiseur de monstres", duration: 45, class: "ceremonie", info: "Entrée gratuite - Sans réservation"},
+                ]
+            }
+        };
+
+        function timeToMinutes(time) {
+            const [h, m] = time.split(':').map(Number);
+            return h * 60 + m;
+        }
+
+        function generateTimeSlots(startTime, endTime) {
+            const slots = [];
+            let current = timeToMinutes(startTime);
+            const end = timeToMinutes(endTime);
+            
+            // Gérer le cas où on passe minuit
+            if (end < current) {
+                // Jusqu'à minuit
+                while (current < 24 * 60) {
+                    const h = Math.floor(current / 60);
+                    const m = current % 60;
+                    slots.push(`${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`);
+                    current += 30;
+                }
+                // Après minuit
+                current = 0;
+                while (current <= end) {
+                    const h = Math.floor(current / 60);
+                    const m = current % 60;
+                    slots.push(`${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`);
+                    current += 30;
+                }
+            } else {
+                while (current <= end) {
+                    const h = Math.floor(current / 60);
+                    const m = current % 60;
+                    slots.push(`${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`);
+                    current += 30;
+                }
+            }
+            
+            return slots;
+        }
+
+        function calculateDurationSlots(duration) {
+            const slots = Math.floor(duration / 30);
+            const remainder = duration % 30;
+            return remainder > 10 ? slots + 1 : slots;
+        }
+
+        function renderDay(dayId) {
+            const day = programme[dayId];
+            const container = document.getElementById(dayId);
+            
+            const timeSlots = generateTimeSlots(day.startTime, day.endTime);
+            const venues = ["Espace Lac", "Casino", "MCL", "Paradiso"];
+            
+            let html = `<h2 class="day-title">${day.title}</h2>`;
+            
+            // Sélecteur de salle pour mobile
+            html += `<div class="venue-selector">`;
+            html += `<label for="venue-select-${dayId}">Choisir une salle :</label>`;
+            html += `<select id="venue-select-${dayId}" onchange="changeVenue('${dayId}', this.value)">`;
+            venues.forEach((venue, index) => {
+                html += `<option value="${index}">${venue}</option>`;
+            });
+            html += `</select></div>`;
+            
+            html += `<div class="schedule-container">`;
+            html += `<table class="schedule-table">`;
+            
+            // Header
+            html += `<thead><tr>`;
+            html += `<th class="time-header">Horaire</th>`;
+            venues.forEach((venue, index) => {
+                const activeClass = index === 0 ? 'active' : '';
+                html += `<th class="venue-header ${activeClass}" data-venue-index="${index}">${venue}</th>`;
+            });
+            html += `</tr></thead>`;
+            
+            // Body avec toutes les lignes de temps
+            html += `<tbody>`;
+            timeSlots.forEach((slot, rowIndex) => {
+                html += `<tr>`;
+                html += `<td class="time-cell">${slot}</td>`;
+                
+                venues.forEach((venue, venueIndex) => {
+                    const activeClass = venueIndex === 0 ? 'active' : '';
+                    html += `<td class="venue-cell ${activeClass}" data-row="${rowIndex}" data-venue="${venueIndex}" data-venue-index="${venueIndex}"></td>`;
+                });
+                
+                html += `</tr>`;
+            });
+            html += `</tbody></table></div>`;
+            
+            container.innerHTML = html;
+            
+            // Positionner les films
+            const startMinutes = timeToMinutes(day.startTime);
+            
+            day.movies.forEach(movie => {
+                const venueIndex = venues.indexOf(movie.venue);
+                const movieStartMinutes = timeToMinutes(movie.time);
+                
+                // Calculer le décalage en ligne depuis le début
+                let offset;
+                if (movieStartMinutes >= startMinutes) {
+                    offset = (movieStartMinutes - startMinutes) / 30;
+                } else {
+                    // Cas où on passe minuit
+                    offset = ((24 * 60 - startMinutes) + movieStartMinutes) / 30;
+                }
+                
+                const heightSlots = calculateDurationSlots(movie.duration);
+                
+                // Trouver la cellule correspondante
+                const cells = container.querySelectorAll(`td[data-venue="${venueIndex}"]`);
+                const targetCell = cells[offset];
+                
+                if (targetCell) {
+                    const movieDiv = document.createElement('div');
+                    movieDiv.className = `movie-block ${movie.class}`;
+                    movieDiv.style.top = '0';
+                    movieDiv.style.height = `${heightSlots * 40 - 2}px`;
+                    
+                    let content = `<div class="movie-title">${movie.title}</div>`;
+                    const hours = Math.floor(movie.duration / 60);
+                    const mins = movie.duration % 60;
+                    content += `<div class="movie-duration">${hours}h${mins.toString().padStart(2, '0')}</div>`;
+                    if (movie.info) {
+                        content += `<div class="movie-info">${movie.info}</div>`;
+                    }
+                    
+                    movieDiv.innerHTML = content;
+                    targetCell.appendChild(movieDiv);
+                }
+            });
+        }
+
+        function changeVenue(dayId, venueIndex) {
+            const container = document.getElementById(dayId);
+            const index = parseInt(venueIndex);
+            
+            // Masquer toutes les colonnes de salles
+            const allHeaders = container.querySelectorAll('.venue-header');
+            const allCells = container.querySelectorAll('.venue-cell');
+            
+            allHeaders.forEach(header => header.classList.remove('active'));
+            allCells.forEach(cell => cell.classList.remove('active'));
+            
+            // Afficher uniquement la salle sélectionnée
+            const selectedHeaders = container.querySelectorAll(`.venue-header[data-venue-index="${index}"]`);
+            const selectedCells = container.querySelectorAll(`.venue-cell[data-venue-index="${index}"]`);
+            
+            selectedHeaders.forEach(header => header.classList.add('active'));
+            selectedCells.forEach(cell => cell.classList.add('active'));
+        }
+
+        function showTab(tabId) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Générer toutes les grilles au chargement
+        Object.keys(programme).forEach(dayId => {
+            renderDay(dayId);
+        });
+    </script>
+</body>
+</html>
